@@ -8,21 +8,23 @@ Food Flow es una plataforma web donde pequeñas y medianas empresas (PyMEs) ofre
 
 Se abre directo en el navegador (publicado con Vercel). No hay que instalar nada; simplemente abre el enlace.
 
-## Qué hace hoy (D2)
+## Qué hace hoy (D3)
 
 - **Menú (home):** muestra los productos de la tienda leídos desde `data/products.json`.
 - **Detalle de producto:** abre un producto y permite **agregarlo al carrito**.
 - **Carrito:** pantalla con los productos elegidos, cantidades, subtotal, envío y total; se puede modificar la cantidad, quitar productos y vaciar el carrito. El carrito se mantiene al moverse entre pantallas.
+- **Datos de entrega:** formulario que **guarda el pedido en una base de datos** (tabla `pedidos` en Supabase) y muestra un mensaje de confirmación.
 
 ## Cómo está construido
 
-HTML, CSS y JavaScript plano, con **Bootstrap 5** cargado desde CDN. Los datos se leen de archivos locales en `/data` (`products.json` y `businesses.json`). Sin framework, sin paso de build y sin base de datos.
+HTML, CSS y JavaScript plano, con **Bootstrap 5** y **Bootstrap Icons** cargados desde CDN. El catálogo se lee de archivos locales en `/data` (`products.json` y `businesses.json`). El formulario de pedido escribe en una tabla de **Supabase** usando su librería cargada desde CDN. Sin framework y sin paso de build.
 
 ## Pantallas
 
 - `index.html` — Menú (home)
 - `product.html` — Detalle de producto
 - `cart.html` — Carrito
+- `pedido.html` — Datos de entrega (formulario que guarda el pedido)
 
 ## Los tres Must
 

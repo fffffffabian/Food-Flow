@@ -10,10 +10,12 @@ Este documento describe, pantalla por pantalla, las tres funcionalidades Must de
 2. Confirmación inmediata del pedido → Pantalla 5.
 3. Seguimiento del estado del pedido → Pantalla 6.
 
-### Estado de implementación (D2)
+### Estado de implementación (D3)
 
-- **Construidas y funcionando:** Pantalla 1 (Menú), Pantalla 2 (Detalle de producto) y Pantalla 3 (Carrito).
-- **Pendientes (próximas entregas):** Pantalla 4 (Datos de entrega), Pantalla 5 (Confirmación) y Pantalla 6 (Seguimiento).
+- **Construidas y funcionando:** Pantalla 1 (Menú), Pantalla 2 (Detalle de producto), Pantalla 3 (Carrito) y Pantalla 4 (Datos de entrega).
+- **Pendientes (próximas entregas):** Pantalla 5 (Confirmación) y Pantalla 6 (Seguimiento).
+
+La Pantalla 4 (Datos de entrega) es un formulario que **guarda el pedido en una base de datos** (tabla `pedidos` en Supabase): al confirmar, se escribe una fila con nombre, teléfono, dirección, método de pago, el detalle del pedido y el total.
 
 ---
 
@@ -96,21 +98,17 @@ Este documento describe, pantalla por pantalla, las tres funcionalidades Must de
 
 ### Usuario visualiza
 
-Formulario con:
-
-- Nombre
-- Teléfono
-- Dirección
-- Método de pago
+- Resumen del pedido (productos y total, tomados del carrito)
+- Formulario con: Nombre, Teléfono, Dirección, Método de pago
 
 ### Entrada
 
-Información del cliente.
+Información del cliente y envío del formulario.
 
 ### Salida
 
-Costo de envío.
-Total final.
+- El pedido se guarda en la base de datos (tabla `pedidos`).
+- Se muestra un mensaje de confirmación (agradecimiento).
 
 ### Casos borde
 
