@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" width="960" height="280" role="img" aria-label="Comida a domicilio con Food Flow">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F6E2C4"/>
+      <stop offset="1" stop-color="#E4B363"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="280" rx="24" fill="url(#g)"/>
+
+  <!-- circulos decorativos -->
+  <circle cx="835" cy="55" r="95" fill="#A44A3F" opacity="0.10"/>
+  <circle cx="905" cy="225" r="55" fill="#A44A3F" opacity="0.08"/>
+  <circle cx="110" cy="235" r="70" fill="#ffffff" opacity="0.22"/>
+  <circle cx="180" cy="85" r="16" fill="#A44A3F" opacity="0.8"/>
+  <circle cx="235" cy="140" r="10" fill="#ffffff" opacity="0.55"/>
+  <circle cx="150" cy="150" r="8" fill="#A44A3F" opacity="0.45"/>
+
+  <!-- sombra del plato -->
+  <ellipse cx="480" cy="212" rx="185" ry="26" fill="#A44A3F" opacity="0.12"/>
+
+  <!-- vapor -->
+  <g stroke="#A44A3F" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.45">
+    <path d="M430 72c-14 18-14 36 0 54"/>
+    <path d="M480 60c-14 18-14 36 0 54"/>
+    <path d="M530 72c-14 18-14 36 0 54"/>
+  </g>
+
+  <!-- palillos -->
+  <rect x="612" y="66" width="13" height="158" rx="6.5" fill="#FAF3EA" transform="rotate(18 618 145)"/>
+  <rect x="642" y="66" width="13" height="158" rx="6.5" fill="#FAF3EA" transform="rotate(10 648 145)"/>
+
+  <!-- tazon -->
+  <path d="M320 152h320a160 160 0 0 1-320 0z" fill="#A44A3F"/>
+  <rect x="305" y="139" width="350" height="27" rx="13.5" fill="#FAF3EA"/>
+
+  <!-- comida (domo) -->
+  <path d="M356 152a124 44 0 0 1 248 0z" fill="#FAF3EA" opacity="0.92"/>
+  <circle cx="452" cy="140" r="15" fill="#E4B363"/>
+  <circle cx="500" cy="132" r="13" fill="#A44A3F"/>
+  <circle cx="545" cy="142" r="11" fill="#E4B363"/>
+</svg>

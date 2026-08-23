@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- vapor -->
+  <path d="M13 7c-1 1.2-1 2.4 0 3.6" stroke="#E4B363" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M18.5 6.5c-1 1.2-1 2.4 0 3.6" stroke="#E4B363" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <!-- tazon (crema, para barra terracota) -->
+  <path d="M5 14h22a11 11 0 0 1-22 0z" fill="#FAF3EA"/>
+  <rect x="4" y="12.4" width="24" height="2.7" rx="1.35" fill="#E4B363"/>
+  <!-- palillos -->
+  <rect x="22" y="3" width="1.8" height="11" rx="0.9" fill="#FAF3EA" transform="rotate(20 22.9 8.5)"/>
+  <rect x="24.4" y="3" width="1.8" height="11" rx="0.9" fill="#FAF3EA" transform="rotate(12 25.3 8.5)"/>
+</svg>
