@@ -97,13 +97,9 @@
     <small>Food Flow · pedidos a domicilio para PyMEs</small>
   </footer>
 
-  <script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-
-    // ======= PEGA AQUÍ LOS DOS VALORES DE TU PROYECTO SUPABASE =======
-    const SUPABASE_URL = "https://qwasusqlamfiueqrlhqs.supabase.co";
-    const SUPABASE_KEY = "sb_publishable__1P5tbupj2D4bDhbVoxu8w_o2gfqScB";
-    // ================================================================
+  <script>
+    // La página ya no habla con la base de datos directamente: envía el pedido
+    // a una función serverless (/api/pedido) que guarda la fila con la llave secreta.
 
     // Armar el resumen del pedido a partir del carrito guardado
     let pedidoTexto = "";
@@ -160,11 +156,16 @@
         total: String(total)
       };
 
-      const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-      const { error } = await supabase.from("pedidos").insert([fila]);
+      const resp = await fetch("/api/pedido", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fila)
+      });
 
-      if (error) {
-        err.textContent = "No pudimos enviar tu pedido: " + error.message;
+      if (!resp.ok) {
+        let detalle = "";
+        try { detalle = (await resp.json()).error || ""; } catch (e) {}
+        err.textContent = "No pudimos enviar tu pedido. " + detalle;
         err.classList.remove("d-none");
         return;
       }

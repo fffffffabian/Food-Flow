@@ -1,0 +1,8 @@
+# Variables de entorno — NUNCA subir la llave secreta a GitHub
+.env
+.env.*
+!.env.example
+
+# Dependencias / build (por si acaso)
+node_modules/
+.vercel
