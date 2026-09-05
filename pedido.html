@@ -170,10 +170,12 @@
         return;
       }
 
-      // No leemos las filas de vuelta: solo mostramos el agradecimiento.
-      document.getElementById("form").classList.add("d-none");
-      ok.classList.remove("d-none");
+      // La función nos devolvió el folio y el estado; los llevamos a la
+      // pantalla de confirmación (sin volver a consultar la base de datos).
+      const data = await resp.json();
       localStorage.removeItem("ff_cart");
+      window.location.href = "confirmacion.html?folio=" +
+        encodeURIComponent(data.folio) + "&estado=" + encodeURIComponent(data.estado);
     });
   </script>
 </body>

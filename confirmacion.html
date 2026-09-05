@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Flow — Pedido confirmado</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Google Fonts: Poppins (headings) + Open Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ff-primary: #A44A3F;
+      --ff-accent:  #E4B363;
+      --ff-bg:      #FAF3EA;
+      --ff-ink:     #3a2b26;
+    }
+    body { background: var(--ff-bg); color: var(--ff-ink); font-family: "Open Sans", system-ui, sans-serif; }
+    h1, h2, h3, .navbar-brand { font-family: "Poppins", system-ui, sans-serif; }
+    .ff-navbar { background: var(--ff-primary); }
+    .ff-navbar .navbar-brand { color: #fff; font-weight: 700; letter-spacing: .3px; }
+    .ff-card { border: none; border-radius: 16px; box-shadow: 0 6px 18px rgba(110, 70, 55, .10); }
+    .ff-check { color: #2e7d32; font-size: 3.4rem; }
+    .ff-title { color: var(--ff-primary); font-weight: 700; }
+    .ff-folio {
+      display: inline-block; background: rgba(164,74,63,.08); color: var(--ff-primary);
+      font-family: "Poppins", sans-serif; font-weight: 700; font-size: 1.5rem;
+      padding: 8px 20px; border-radius: 12px; letter-spacing: 1px;
+    }
+    .ff-btn { background: var(--ff-accent); color: var(--ff-ink); font-weight: 600; border: none; }
+    .ff-btn:hover { background: #d8a24f; color: var(--ff-ink); }
+    .ff-estado {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ff-primary); color: #fff;
+      padding: 8px 18px; border-radius: 999px; font-weight: 600;
+    }
+    .ff-estado .dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+    footer { color: #8a756c; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar ff-navbar shadow-sm">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1"><img src="assets/img/logo.svg" alt="" style="height:26px;vertical-align:-5px" class="me-1">Food Flow</span>
+    </div>
+  </nav>
+
+  <main class="container py-5" style="max-width:640px">
+    <div class="card ff-card text-center">
+      <div class="card-body p-4 p-md-5">
+        <i class="bi bi-check-circle-fill ff-check"></i>
+        <h1 class="ff-title mt-2 mb-1">¡Pedido recibido!</h1>
+        <p class="text-muted mb-4">Guarda tu número de pedido para darle seguimiento.</p>
+
+        <p class="mb-1 text-muted">Número de pedido</p>
+        <div class="ff-folio mb-4" id="folio">—</div>
+
+        <p class="mb-2 text-muted">Estado</p>
+        <div><span class="ff-estado"><span class="dot"></span><span id="estado">Recibido</span></span></div>
+
+        <a class="btn ff-btn btn-lg mt-4" href="index.html">Volver al menú</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-4">
+    <small>Food Flow · pedidos a domicilio para PyMEs</small>
+  </footer>
+
+  <script>
+    // El folio y el estado vienen en la URL (los devolvió la función).
+    // Esta pantalla NO consulta la base de datos: solo muestra lo recibido.
+    const params = new URLSearchParams(window.location.search);
+    const folio = params.get("folio") || "—";
+    const estado = params.get("estado") || "Recibido";
+
+    document.getElementById("folio").textContent = folio;
+    document.getElementById("estado").textContent = estado;
+  </script>
+</body>
+</html>

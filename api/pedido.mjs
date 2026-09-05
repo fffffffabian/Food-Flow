@@ -18,6 +18,11 @@ export default async function handler(req, res) {
 
   const { nombre, telefono, direccion, metodo_pago, pedido, total } = req.body || {};
 
+  // La función genera el folio y el estado inicial (una sola vuelta):
+  // se guardan en la fila y se devuelven al cliente para la confirmación.
+  const folio = "FF-" + String(Date.now()).slice(-6);
+  const estado = "Recibido";
+
   const respuesta = await fetch(SUPABASE_URL + "/rest/v1/pedidos", {
     method: "POST",
     headers: {
@@ -26,7 +31,7 @@ export default async function handler(req, res) {
       "Content-Type": "application/json",
       "Prefer": "return=minimal"
     },
-    body: JSON.stringify({ nombre, telefono, direccion, metodo_pago, pedido, total })
+    body: JSON.stringify({ nombre, telefono, direccion, metodo_pago, pedido, total, folio, estado })
   });
 
   if (!respuesta.ok) {
@@ -34,5 +39,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: detalle });
   }
 
-  return res.status(200).json({ ok: true });
+  // Devolvemos folio y estado para que la pantalla de confirmación los muestre
+  // sin volver a preguntarle a la base de datos.
+  return res.status(200).json({ folio, estado });
 }
