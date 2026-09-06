@@ -10,12 +10,17 @@ Este documento describe, pantalla por pantalla, las tres funcionalidades Must de
 2. Confirmación inmediata del pedido → Pantalla 5.
 3. Seguimiento del estado del pedido → Pantalla 6.
 
-### Estado de implementación (D3)
+### Estado de implementación (D4)
 
-- **Construidas y funcionando:** Pantalla 1 (Menú), Pantalla 2 (Detalle de producto), Pantalla 3 (Carrito) y Pantalla 4 (Datos de entrega).
-- **Pendientes (próximas entregas):** Pantalla 5 (Confirmación) y Pantalla 6 (Seguimiento).
+- **Construidas y funcionando:** Pantalla 1 (Menú), Pantalla 2 (Detalle de producto), Pantalla 3 (Carrito), Pantalla 4 (Datos de entrega) y Pantalla 5 (Confirmación).
 
-La Pantalla 4 (Datos de entrega) es un formulario que **guarda el pedido en una base de datos** (tabla `pedidos` en Supabase): al confirmar, se escribe una fila con nombre, teléfono, dirección, método de pago, el detalle del pedido y el total.
+La transacción del cliente funciona de punta a punta a través de una función serverless (`api/pedido.mjs`) con la llave secreta del lado del servidor: al confirmar, se guarda una fila en la tabla `pedidos` (nombre, teléfono, dirección, método de pago, detalle del pedido, total, un **folio** y el **estado** "Recibido"), y la Pantalla 5 (Confirmación) muestra el folio y el estado que la función devolvió, sin volver a consultar la base de datos.
+
+**Añadidos en D4 (además de las pantallas del cliente):**
+
+- **Panel de operador (back office):** pantalla interna, en su propia dirección y **sin enlace** desde el producto, que lista los pedidos y permite al operador **cambiar el estado** de uno (Recibido → En preparación → En camino → Entregado, o Cancelado), por su propia función serverless (`api/admin.mjs`). Aquí vive el seguimiento del estado (Pantalla 6).
+- **Cancelar pedido:** el cliente puede cancelar su pedido por folio (estado → "Cancelado") desde `cancelar.html`, por su propia función serverless (`api/cancelar.mjs`).
+- **Asistente (chatbot):** asistente dentro del producto que responde sobre Food Flow (menú, envíos, cómo pedir, estados) a través de una función serverless (`api/chat.mjs`) con la llave del modelo del lado del servidor.
 
 ---
 
